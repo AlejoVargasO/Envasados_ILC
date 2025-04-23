@@ -1,0 +1,23 @@
+# Entorno virtual
+.venv/
+
+# Configuración local de VS Code
+.vscode/
+
+# Cachés de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Datos sin versionar
+data/raw/
+data/processed/
+
+# Modelos entrenados
+models/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Archivos de log
+logs/
