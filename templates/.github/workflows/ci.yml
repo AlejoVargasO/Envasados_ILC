@@ -1,0 +1,54 @@
+# .github/workflows/ci.yml
+
+name: CI
+
+on:
+  pull_request:
+    branches: [ develop ]
+  push:
+    tags: ['v*.*.*']
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          .\.venv\Scripts\activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint with flake8
+        run: |
+          .\.venv\Scripts\activate
+          pip install flake8
+          flake8 src/**/*.py
+
+      - name: Run type checking with mypy
+        run: |
+          .\.venv\Scripts\activate
+          pip install mypy
+          mypy src
+
+      - name: Basic smoke tests
+        run: |
+          .\.venv\Scripts\activate
+          python src/ingest.py
+          python src/merge_quality_availability.py
+          python src/prepare.py
+          python src/train.py --help
+          python src/predict.py --help
+
+      - name: Report results
+        if: success()
+        run: echo "CI completed successfully."
