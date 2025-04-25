@@ -14,14 +14,45 @@ RAW_DIR = Path("data/raw")
 PROC_DIR = Path("data/processed")
 PROC_DIR.mkdir(parents=True, exist_ok=True)
 
-# Mapeo de stopping_reason a grupos operativos
+# Mapeo completo de stopping_reason a grupos operativos
 CAUSE_MAP = {
-    "FALLA MEC": "Mecanica",
-    "FALLA ELEC": "Electrica",
-    "ESPERA INS": "Insumo",
-    "CAMBIO FORM": "CambioFormato",
+    # Mantenimiento
+    "M01": "Mantenimiento_Averia",
+    "M02": "Mantenimiento_Ajuste",
+    "M03": "Mantenimiento_Servicios",
+    "M04": "Mantenimiento_Programado",
+    "M05": "Mantenimiento_Planeado",
+    "M06": "Mantenimiento_AjusteFinalCambioFormato",
+    "M09": "Mantenimiento_EquipoRelacionado",
+
+    # Planeación
+    "PD01": "Planeacion_CambioProgramacion",
+    "PD02": "Planeacion_FaltaInsumo",
+
+    # Logística
+    "L01": "Logistica_SinMateriaPrima",
+    "L02": "Logistica_SinEspacio",
+
+    # Producción
+    "P01": "Produccion_ParoOperativo",
+    "P02": "Produccion_Convencional",
+    "P03": "Produccion_Limpieza",
+    "P04": "Produccion_CambioDestino",
+    "P05": "Produccion_SinSistemaWMS",
+    "P06": "Produccion_Capacitacion",
+    "P07": "Produccion_SinLicor",
+    "P08": "Produccion_NivelLlenado",
+
+    # Calidad
+    "CO1": "Calidad_Embalaje",
+    "CO2": "Calidad_Botella",
+    "CO3": "Calidad_Tapa",
+    "CO4": "Calidad_Etiqueta",
+    "CO5": "Calidad_ParametrosFueraRango",
+
+    # Especiales
     "-": "Otros",
-    # Agrega más códigos según la tabla oficial
+    "001": "Falla_Comunicacion",
 }
 
 # Prefijos de archivo raw
@@ -31,7 +62,6 @@ DISP_PREFIX = "disponibilidad"
 # ---------------------------------------
 # Funciones auxiliares
 # ---------------------------------------
-
 def latest_csv(prefix: str) -> Path:
     files = sorted(RAW_DIR.glob(f"{prefix}_*.csv"), key=lambda p: p.stat().st_mtime)
     if not files:
@@ -41,7 +71,6 @@ def latest_csv(prefix: str) -> Path:
 # ---------------------------------------
 # Pipeline principal
 # ---------------------------------------
-
 def merge_and_clean():
     # 1. Cargar CSV
     calidad_path = latest_csv(CALIDAD_PREFIX)
@@ -56,8 +85,8 @@ def merge_and_clean():
     d["_time"] = pd.to_datetime(d["_time"]).dt.floor("30s")
 
     # 3. Filtrar sólo datos de la línea 3 por columna 'linea'
-    q = q[q['linea'] == 'linea03'].reset_index(drop=True)
-    d = d[d['linea'] == 'linea03'].reset_index(drop=True)
+    q = q[q["linea"] == "linea03"].reset_index(drop=True)
+    d = d[d["linea"] == "linea03"].reset_index(drop=True)
 
     # 4. Eliminar columnas _field que no aportan
     q = q.drop(columns=[c for c in q.columns if c.startswith("_field")], errors="ignore")
