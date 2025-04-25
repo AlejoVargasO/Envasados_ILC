@@ -32,9 +32,8 @@ Proyecto_Envasados/
 │   ├── ingest.py
 │   ├── merge_quality_availability.py
 │   ├── prepare.py
-│   ├── train.py
-│   ├── predict.py
-│   └── utils.py
+│   ├── train.py 
+│   └── predict.py
 ├── templates/              # Plantillas HTML para Flask
 │   └── index.html
 └── README.md               # Este archivo
