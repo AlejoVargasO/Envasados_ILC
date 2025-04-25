@@ -75,7 +75,7 @@ def endpoint_forecast():
     run_predict()
     # Asumimos que predict.py genera un CSV con nombre 'prediction_YYYY-MM-DD.csv'
     today = datetime.date.today().isoformat()
-    csv_path = os.path.join(DATA_DIR, f'prediction_{today}.csv')
+    csv_path = os.path.join(DATA_DIR, f'forecast_{today}.csv')
     if os.path.exists(csv_path):
         return send_file(csv_path, mimetype='text/csv')
     else:
