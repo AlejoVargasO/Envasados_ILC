@@ -1,9 +1,8 @@
 """
 Merge Quality & Availability Pipeline
 Lee los CSV de calidad y disponibilidad, limpia, mapea motivos de paro,
-pivota availability y crea un Parquet único listo para feature engineering.
+filtra sólo línea 3 (columna `linea`), pivota availability y crea un Parquet único listo para feature engineering.
 """
-import os
 import pandas as pd
 from pathlib import Path
 import datetime
@@ -21,6 +20,7 @@ CAUSE_MAP = {
     "FALLA ELEC": "Electrica",
     "ESPERA INS": "Insumo",
     "CAMBIO FORM": "CambioFormato",
+    "-": "Otros",
     # Agrega más códigos según la tabla oficial
 }
 
@@ -33,7 +33,6 @@ DISP_PREFIX = "disponibilidad"
 # ---------------------------------------
 
 def latest_csv(prefix: str) -> Path:
-    """Devuelve el CSV más reciente dentro de data/raw/ que empiece con el prefijo dado."""
     files = sorted(RAW_DIR.glob(f"{prefix}_*.csv"), key=lambda p: p.stat().st_mtime)
     if not files:
         raise FileNotFoundError(f"No se encontró archivo raw con prefijo '{prefix}' en {RAW_DIR}")
@@ -56,26 +55,27 @@ def merge_and_clean():
     q["_time"] = pd.to_datetime(q["_time"]).dt.floor("30s")
     d["_time"] = pd.to_datetime(d["_time"]).dt.floor("30s")
 
-    # 3. Eliminar columnas _field que no aportan
+    # 3. Filtrar sólo datos de la línea 3 por columna 'linea'
+    q = q[q['linea'] == 'linea03'].reset_index(drop=True)
+    d = d[d['linea'] == 'linea03'].reset_index(drop=True)
+
+    # 4. Eliminar columnas _field que no aportan
     q = q.drop(columns=[c for c in q.columns if c.startswith("_field")], errors="ignore")
     d = d.drop(columns=[c for c in d.columns if c.startswith("_field")], errors="ignore")
 
-    # 4. Seleccionar columnas útiles
+    # 5. Seleccionar columnas útiles
     q = q[["_time", "_value", "real_velocity", "product_id", "device_id"]]
     d = d[["_time", "device_id", "_value", "stopping_reason"]]
 
-    # 5. Mapear estado y motivo de paro
+    # 6. Mapear estado y motivo de paro
     d["state_flag"] = (d["_value"] == "Produciendo").astype(int)
     d["stop_group"] = d["stopping_reason"].map(CAUSE_MAP).fillna("Otros")
-
-    # 6. (Opcional) filtrar dispositivo clave
-    # d = d[d["device_id"] == "03-Monoblock1"]
 
     # 7. Limpiar duplicados en availability
     d = d.drop(columns=["_value", "stopping_reason"])
     d = d.drop_duplicates(subset=["_time", "device_id"], keep="first")
 
-    # 8. Fusionar por timestamp y dispositivo usando merge_asof
+    # 8. Merge asof: unir calidad con availability más cercana por tiempo y dispositivo
     q = q.sort_values("_time")
     d = d.sort_values("_time")
     merged = pd.merge_asof(
@@ -86,19 +86,19 @@ def merge_and_clean():
         tolerance=pd.Timedelta("30s")
     )
 
-    # 9. Rellenar NaNs
+    # 9. Rellenar NaNs de state_flag con 0
     merged["state_flag"] = merged["state_flag"].fillna(0).astype(int)
 
-    # 10. Renombrar columna de velocidad para evitar ambigüedad
+    # 10. Renombrar _value a velocity_bpm
     merged = merged.rename(columns={"_value": "velocity_bpm"})
 
-    # 11. One‑hot de stop_group
+    # 11. One-hot de stop_group
     merged = pd.get_dummies(merged, columns=["stop_group"], prefix="stop")
 
     # 12. Guardar Parquet
     out_path = PROC_DIR / f"merged_{datetime.date.today()}.parquet"
     merged.to_parquet(out_path, index=False)
-    print(f"[MERGE] Dataset fusionado guardado en: {out_path}")
+    print(f"[MERGE] Dataset fusionado (línea 3) guardado en: {out_path}")
 
 if __name__ == "__main__":
     try:
