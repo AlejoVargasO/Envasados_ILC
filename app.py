@@ -10,28 +10,32 @@ Endpoints:
 Scheduler:
   - Al inicio de cada turno programa las tareas automáticamente.
 """
-from flask import Flask, jsonify, send_file
-from apscheduler.schedulers.background import BackgroundScheduler
-import subprocess
-import datetime
+import sys
 import os
+import datetime
+import subprocess
 
-# Configuración de paths
-BASE_DIR = os.getcwd()
-SRC_DIR = os.path.join(BASE_DIR, 'src')
-DATA_DIR = os.path.join(BASE_DIR, 'data', 'predictions')
+from flask import Flask, jsonify, render_template, send_file
+from apscheduler.schedulers.background import BackgroundScheduler
 
-# Comandos para ejecutar scripts
-CMD_INGEST = ['python', os.path.join(SRC_DIR, 'ingest.py')]
-CMD_MERGE  = ['python', os.path.join(SRC_DIR, 'merge_quality_availability.py')]
-CMD_TRAIN  = ['python', os.path.join(SRC_DIR, 'train.py')]
-CMD_PREDICT= ['python', os.path.join(SRC_DIR, 'predict.py')]
+# ----------------------------------
+# Configuración de paths y comandos
+# ----------------------------------
+BASE_DIR   = os.getcwd()
+SRC_DIR    = os.path.join(BASE_DIR, 'src')
+DATA_DIR   = os.path.join(BASE_DIR, 'data', 'predictions')
+PYTHON_EXE = sys.executable  # <-- asegúrate de usar el venv
+
+CMD_INGEST   = [PYTHON_EXE, os.path.join(SRC_DIR, 'ingest.py')]
+CMD_MERGE    = [PYTHON_EXE, os.path.join(SRC_DIR, 'merge_quality_availability.py')]
+CMD_TRAIN    = [PYTHON_EXE, os.path.join(SRC_DIR, 'train.py')]
+CMD_PREDICT  = [PYTHON_EXE, os.path.join(SRC_DIR, 'predict.py')]
 
 app = Flask(__name__)
 scheduler = BackgroundScheduler()
 
 # ----------------------------------
-# Funciones para ejecutar scripts
+# Funciones que lanzan los scripts
 # ----------------------------------
 def run_ingest():
     subprocess.run(CMD_INGEST, check=False)
@@ -46,14 +50,11 @@ def run_predict():
     subprocess.run(CMD_PREDICT, check=False)
 
 # ----------------------------------
-# Endpoints API
+# Endpoints
 # ----------------------------------
-from flask import render_template
-
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
-
 
 @app.route('/ingest', methods=['GET'])
 def endpoint_ingest():
@@ -73,28 +74,25 @@ def endpoint_train():
 @app.route('/forecast', methods=['GET'])
 def endpoint_forecast():
     run_predict()
-    # Asumimos que predict.py genera un CSV con nombre 'prediction_YYYY-MM-DD.csv'
     today = datetime.date.today().isoformat()
     csv_path = os.path.join(DATA_DIR, f'forecast_{today}.csv')
     if os.path.exists(csv_path):
-        return send_file(csv_path, mimetype='text/csv')
-    else:
-        return jsonify({ 'error': 'prediction file not found', 'path': csv_path }), 404
+        return send_file(csv_path, mimetype='text/csv', as_attachment=True)
+    return jsonify({ 'error': 'prediction file not found', 'path': csv_path }), 404
 
 # ----------------------------------
-# Programación de tareas (ejemplo)
+# Scheduler
 # ----------------------------------
-# Turnos: 7:00 y 16:00
-# Ajusta horas y minutos según tu calendario real de turnos.
-scheduler.add_job(func=run_ingest, trigger='cron', hour=6, minute=55)
-scheduler.add_job(func=run_merge,  trigger='cron', hour=6, minute=58)
-scheduler.add_job(func=run_train,  trigger='cron', hour=7, minute=5)
-scheduler.add_job(func=run_predict,trigger='cron', hour=7, minute=10)
+# Ajusta los horarios a tus turnos reales
+scheduler.add_job(run_ingest,  'cron', hour=6,  minute=55)
+scheduler.add_job(run_merge,   'cron', hour=6,  minute=58)
+scheduler.add_job(run_train,   'cron', hour=7,  minute=5)
+scheduler.add_job(run_predict, 'cron', hour=7,  minute=10)
 
-scheduler.add_job(func=run_ingest, trigger='cron', hour=15, minute=55)
-scheduler.add_job(func=run_merge,  trigger='cron', hour=15, minute=58)
-scheduler.add_job(func=run_train,  trigger='cron', hour=16, minute=5)
-scheduler.add_job(func=run_predict,trigger='cron', hour=16, minute=10)
+scheduler.add_job(run_ingest,  'cron', hour=15, minute=55)
+scheduler.add_job(run_merge,   'cron', hour=15, minute=58)
+scheduler.add_job(run_train,   'cron', hour=16, minute=5)
+scheduler.add_job(run_predict, 'cron', hour=16, minute=10)
 
 scheduler.start()
 
