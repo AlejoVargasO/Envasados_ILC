@@ -2,56 +2,85 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pronóstico de Producción</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 2rem; }
     h1 { color: #2c3e50; }
-    button { padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; }
-    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
-    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: center; }
-    th { background-color: #f5f5f5; }
-    #result { margin-top: 1rem; }
+    label, button { font-size: 1rem; margin-right: 1rem; }
+    button { padding: 0.5rem 1rem; cursor: pointer; }
+    #chart { width: 100%; height: 500px; margin-top: 1rem; }
+    #result { color: red; margin-top: 1rem; }
   </style>
+  <!-- Plotly.js CDN -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
   <h1>Pronóstico de Producción</h1>
+
+  <!-- Controles dinámicos -->
+  <label>
+    Línea:
+    <select id="sel-line">
+      <option value="linea03">Línea 3</option>
+      <option value="linea01">Línea 1</option>
+      <option value="linea02">Línea 2</option>
+      <option value="linea04">Línea 4</option>
+    </select>
+  </label>
+
+  <label>
+    Horas del turno:
+    <input type="number" id="inp-hours" value="9" min="1" max="24" style="width:4rem">
+  </label>
+
   <button id="btn-forecast">Obtener Pronóstico</button>
+
+  <div id="chart"></div>
   <div id="result"></div>
 
   <script>
-    document.getElementById('btn-forecast').addEventListener('click', async () => {
-      const resultDiv = document.getElementById('result');
+    const btn = document.getElementById('btn-forecast');
+    const chartDiv = document.getElementById('chart');
+    const resultDiv = document.getElementById('result');
+
+    btn.addEventListener('click', async () => {
+      const line  = document.getElementById('sel-line').value;
+      const hours = document.getElementById('inp-hours').value;
+
+      btn.disabled = true;
       resultDiv.textContent = 'Cargando...';
+      chartDiv.innerHTML = '';
+
       try {
-        const response = await fetch('/forecast');
-        if (!response.ok) throw new Error('Error al obtener pronóstico');
-        const csv = await response.text();
-        const lines = csv.trim().split('\n');
-        const headers = lines[0].split(',');
-        const table = document.createElement('table');
-        // Encabezado
-        const thead = document.createElement('thead');
-        const trHead = document.createElement('tr');
-        headers.forEach(h => {
-          const th = document.createElement('th'); th.textContent = h; trHead.appendChild(th);
-        });
-        thead.appendChild(trHead);
-        table.appendChild(thead);
-        // Cuerpo
-        const tbody = document.createElement('tbody');
-        lines.slice(1).forEach(line => {
-          const tr = document.createElement('tr');
-          line.split(',').forEach(cell => {
-            const td = document.createElement('td'); td.textContent = cell; tr.appendChild(td);
-          });
-          tbody.appendChild(tr);
-        });
-        table.appendChild(tbody);
-        resultDiv.innerHTML = '';
-        resultDiv.appendChild(table);
+        const resp = await fetch(`/forecast/data?line=${line}&hours=${hours}`);
+        const data = await resp.json();
+        if (data.error) throw new Error(data.error);
+
+        // Preparar arrays de datos
+        const x = data.map(d => d._time);
+        const y = data.map(d => d.predicted_velocity_bpm);
+
+        // Crear la traza y layout
+        const trace = {
+          x: x,
+          y: y,
+          mode: 'lines+markers',
+          name: 'Velocidad predicha'
+        };
+        const layout = {
+          title: `Pronóstico (${line}, ${hours}h)`,
+          xaxis: { title: 'Tiempo' },
+          yaxis: { title: 'Botellas por minuto' }
+        };
+
+        // Dibujar con Plotly
+        Plotly.newPlot(chartDiv, [trace], layout, { responsive: true });
+        resultDiv.textContent = '';
       } catch (err) {
-        resultDiv.textContent = err.message;
+        resultDiv.textContent = 'Error: ' + err.message;
+      } finally {
+        btn.disabled = false;
       }
     });
   </script>

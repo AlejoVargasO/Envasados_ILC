@@ -1,0 +1,27 @@
+pipeline:
+  line: linea03
+  horizon_hours: 9
+  lags: [1, 2, 4, 10]
+  roll_windows: [10, 20]
+
+  ingest_hour_morning: 6
+  ingest_minute_morning: 55
+  merge_hour_morning: 6
+  merge_minute_morning: 58
+  train_hour_morning: 7
+  train_minute_morning: 5
+  forecast_hour_morning: 7
+  forecast_minute_morning: 10
+
+  ingest_hour_evening: 15
+  ingest_minute_evening: 55
+  merge_hour_evening: 15
+  merge_minute_evening: 58
+  train_hour_evening: 16
+  train_minute_evening: 5
+  forecast_hour_evening: 16
+  forecast_minute_evening: 10
+
+auth:
+  user: admin
+  pass: secret

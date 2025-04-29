@@ -1,0 +1,328 @@
+2025-04-28 09:52:21,000 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,001 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,002 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,003 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,004 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,005 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,005 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,007 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:52:21,011 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,013 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,015 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,016 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,016 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,018 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,018 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,019 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:52:21,019 INFO Scheduler started
+2025-04-28 09:52:23,004 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.14:5000
+2025-04-28 09:52:23,004 INFO [33mPress CTRL+C to quit[0m
+2025-04-28 09:52:27,585 INFO Request 1: GET /
+2025-04-28 09:52:27,585 INFO Completed GET / in 0.000s -> 401
+2025-04-28 09:52:27,586 INFO 127.0.0.1 - - [28/Apr/2025 09:52:27] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-28 09:53:50,495 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,496 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,496 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,497 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,497 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,497 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,498 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,498 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 09:53:50,499 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,500 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,500 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,500 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,500 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,501 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,501 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,501 INFO Added job "<lambda>" to job store "default"
+2025-04-28 09:53:50,501 INFO Scheduler started
+2025-04-28 09:53:51,786 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.14:5000
+2025-04-28 09:53:51,787 INFO [33mPress CTRL+C to quit[0m
+2025-04-28 09:54:01,346 INFO Request 1: GET /
+2025-04-28 09:54:01,346 INFO Completed GET / in 0.000s -> 401
+2025-04-28 09:54:01,349 INFO 127.0.0.1 - - [28/Apr/2025 09:54:01] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-28 09:54:07,605 INFO Request 2: GET /
+2025-04-28 09:54:07,606 INFO Completed GET / in 0.001s -> 401
+2025-04-28 09:54:07,607 INFO 127.0.0.1 - - [28/Apr/2025 09:54:07] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-28 09:54:08,871 INFO Request 3: GET /
+2025-04-28 09:54:08,873 INFO Completed GET / in 0.002s -> 401
+2025-04-28 09:54:08,874 INFO 127.0.0.1 - - [28/Apr/2025 09:54:08] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-28 09:54:18,275 INFO Request 4: GET /
+2025-04-28 09:54:18,275 INFO Completed GET / in 0.000s -> 401
+2025-04-28 09:54:18,276 INFO 127.0.0.1 - - [28/Apr/2025 09:54:18] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-28 09:55:42,065 INFO Request 5: GET /
+2025-04-28 09:55:42,085 INFO Completed GET / in 0.021s -> 200
+2025-04-28 09:55:42,108 INFO 127.0.0.1 - - [28/Apr/2025 09:55:42] "GET / HTTP/1.1" 200 -
+2025-04-28 09:55:52,444 INFO Request 6: GET /forecast/data
+2025-04-28 09:55:52,444 INFO Running predict
+2025-04-28 09:58:09,399 INFO predict completed successfully
+2025-04-28 09:58:10,544 INFO Completed GET /forecast/data in 138.100s -> 200
+2025-04-28 09:58:10,546 INFO 127.0.0.1 - - [28/Apr/2025 09:58:10] "GET /forecast/data HTTP/1.1" 200 -
+2025-04-28 10:07:22,794 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,795 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,796 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,796 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,797 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,797 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,798 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,798 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-28 10:07:22,801 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,802 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,802 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,802 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,803 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,804 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,804 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,804 INFO Added job "<lambda>" to job store "default"
+2025-04-28 10:07:22,804 INFO Scheduler started
+2025-04-28 10:07:24,101 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.14:5000
+2025-04-28 10:07:24,101 INFO [33mPress CTRL+C to quit[0m
+2025-04-28 10:07:33,828 INFO Request 1: GET /
+2025-04-28 10:07:33,828 INFO Completed GET / in 0.001s -> 401
+2025-04-28 10:07:33,829 INFO 127.0.0.1 - - [28/Apr/2025 10:07:33] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-28 10:07:39,458 INFO Request 2: GET /
+2025-04-28 10:07:39,463 INFO Completed GET / in 0.005s -> 200
+2025-04-28 10:07:39,464 INFO 127.0.0.1 - - [28/Apr/2025 10:07:39] "GET / HTTP/1.1" 200 -
+2025-04-29 08:15:50,248 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,249 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,250 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,250 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,250 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,250 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,251 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,251 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:15:50,253 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,253 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,253 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,255 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,255 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,256 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,256 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,256 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:15:50,256 INFO Scheduler started
+2025-04-29 08:15:51,572 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.14:5000
+2025-04-29 08:15:51,572 INFO [33mPress CTRL+C to quit[0m
+2025-04-29 08:16:00,251 INFO Request 1: GET /
+2025-04-29 08:16:00,253 INFO Completed GET / in 0.001s -> 401
+2025-04-29 08:16:00,254 INFO 127.0.0.1 - - [29/Apr/2025 08:16:00] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-29 08:16:08,575 INFO Request 2: GET /
+2025-04-29 08:16:08,626 INFO Completed GET / in 0.052s -> 200
+2025-04-29 08:16:08,626 INFO 127.0.0.1 - - [29/Apr/2025 08:16:08] "GET / HTTP/1.1" 200 -
+2025-04-29 08:16:08,699 INFO Request 3: GET /favicon.ico
+2025-04-29 08:16:08,701 INFO Completed GET /favicon.ico in 0.001s -> 404
+2025-04-29 08:16:08,701 INFO 127.0.0.1 - - [29/Apr/2025 08:16:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-29 08:16:19,133 INFO Request 4: GET /forecast/data
+2025-04-29 08:16:19,134 INFO Running predict
+2025-04-29 08:19:18,705 INFO predict completed successfully
+2025-04-29 08:19:18,706 INFO Completed GET /forecast/data in 179.573s -> 404
+2025-04-29 08:19:18,707 INFO 127.0.0.1 - - [29/Apr/2025 08:19:18] "[33mGET /forecast/data?line=linea03&hours=9 HTTP/1.1[0m" 404 -
+2025-04-29 08:52:11,839 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,840 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,840 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,840 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,842 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,842 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,843 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,843 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 08:52:11,846 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,846 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,846 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,847 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,848 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,849 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,850 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,850 INFO Added job "<lambda>" to job store "default"
+2025-04-29 08:52:11,851 INFO Scheduler started
+2025-04-29 08:52:13,151 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.14:5000
+2025-04-29 08:52:13,152 INFO [33mPress CTRL+C to quit[0m
+2025-04-29 08:52:28,946 INFO Request 1: GET /
+2025-04-29 08:52:28,954 INFO Completed GET / in 0.007s -> 200
+2025-04-29 08:52:28,955 INFO 127.0.0.1 - - [29/Apr/2025 08:52:28] "GET / HTTP/1.1" 200 -
+2025-04-29 08:52:30,501 INFO Request 2: GET /
+2025-04-29 08:52:30,501 INFO Completed GET / in 0.000s -> 200
+2025-04-29 08:52:30,502 INFO 127.0.0.1 - - [29/Apr/2025 08:52:30] "GET / HTTP/1.1" 200 -
+2025-04-29 08:52:31,019 INFO Request 3: GET /
+2025-04-29 08:52:31,021 INFO Completed GET / in 0.001s -> 200
+2025-04-29 08:52:31,021 INFO 127.0.0.1 - - [29/Apr/2025 08:52:31] "GET / HTTP/1.1" 200 -
+2025-04-29 08:52:35,647 INFO Request 4: GET /forecast/data
+2025-04-29 08:52:35,648 INFO Running predict
+2025-04-29 08:52:44,481 ERROR Error running predict: Command '['C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\.venv\\Scripts\\python.exe', 'C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\src\\predict.py', '--line', 'linea03', '--hours', '9']' returned non-zero exit status 1.
+2025-04-29 08:52:44,483 INFO Completed GET /forecast/data in 8.835s -> 404
+2025-04-29 08:52:44,483 INFO 127.0.0.1 - - [29/Apr/2025 08:52:44] "[33mGET /forecast/data?line=linea03&hours=9 HTTP/1.1[0m" 404 -
+2025-04-29 12:59:15,283 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,283 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,283 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,285 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,285 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,285 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,286 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,286 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 12:59:15,288 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,288 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,289 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,289 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,289 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,290 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,290 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,291 INFO Added job "<lambda>" to job store "default"
+2025-04-29 12:59:15,291 INFO Scheduler started
+2025-04-29 12:59:16,829 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.249.50:5000
+2025-04-29 12:59:16,829 INFO [33mPress CTRL+C to quit[0m
+2025-04-29 12:59:21,403 INFO Request 1: GET /
+2025-04-29 12:59:21,486 INFO Completed GET / in 0.083s -> 200
+2025-04-29 12:59:21,487 INFO 127.0.0.1 - - [29/Apr/2025 12:59:21] "GET / HTTP/1.1" 200 -
+2025-04-29 12:59:26,460 INFO Request 2: GET /
+2025-04-29 12:59:26,461 INFO Completed GET / in 0.001s -> 200
+2025-04-29 12:59:26,462 INFO 127.0.0.1 - - [29/Apr/2025 12:59:26] "GET / HTTP/1.1" 200 -
+2025-04-29 12:59:33,534 INFO Request 3: GET /
+2025-04-29 12:59:33,535 INFO Completed GET / in 0.000s -> 200
+2025-04-29 12:59:33,535 INFO 127.0.0.1 - - [29/Apr/2025 12:59:33] "GET / HTTP/1.1" 200 -
+2025-04-29 12:59:36,867 INFO Request 4: GET /forecast/data
+2025-04-29 12:59:36,867 INFO Running predict
+2025-04-29 13:01:41,908 INFO predict completed successfully
+2025-04-29 13:01:42,621 INFO Completed GET /forecast/data in 125.754s -> 200
+2025-04-29 13:01:42,621 INFO 127.0.0.1 - - [29/Apr/2025 13:01:42] "GET /forecast/data?line=linea03&hours=9 HTTP/1.1" 200 -
+2025-04-29 13:06:21,885 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,886 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,886 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,888 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,889 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,889 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,890 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,890 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:06:21,892 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,892 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,893 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,893 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,894 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,894 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,895 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,895 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:06:21,895 INFO Scheduler started
+2025-04-29 13:06:23,198 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.249.50:5000
+2025-04-29 13:06:23,198 INFO [33mPress CTRL+C to quit[0m
+2025-04-29 13:06:23,338 INFO Request 1: GET /
+2025-04-29 13:06:23,338 INFO Completed GET / in 0.000s -> 401
+2025-04-29 13:06:23,338 INFO 127.0.0.1 - - [29/Apr/2025 13:06:23] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-29 13:06:42,549 INFO Request 2: GET /
+2025-04-29 13:06:42,551 INFO Completed GET / in 0.002s -> 401
+2025-04-29 13:06:42,552 INFO 127.0.0.1 - - [29/Apr/2025 13:06:42] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-29 13:06:52,462 INFO Request 3: GET /
+2025-04-29 13:06:52,462 INFO Completed GET / in 0.000s -> 401
+2025-04-29 13:06:52,463 INFO 127.0.0.1 - - [29/Apr/2025 13:06:52] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-04-29 13:07:07,804 INFO Request 4: GET /
+2025-04-29 13:07:07,809 INFO Completed GET / in 0.005s -> 200
+2025-04-29 13:07:07,810 INFO 127.0.0.1 - - [29/Apr/2025 13:07:07] "GET / HTTP/1.1" 200 -
+2025-04-29 13:07:12,459 INFO Request 5: GET /forecast/data
+2025-04-29 13:07:12,460 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 9
+2025-04-29 13:09:23,601 INFO predict completed successfully
+2025-04-29 13:09:23,602 ERROR Exception on /forecast/data [GET]
+Traceback (most recent call last):
+  File "C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aleja\Workspace\Python\Proyecto_Envasados\app.py", line 53, in decorated
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aleja\Workspace\Python\Proyecto_Envasados\app.py", line 152, in forecast_data
+    df = pd.read_csv(fpath, parse_dates=['_time'])
+         ^^
+NameError: name 'pd' is not defined
+2025-04-29 13:09:23,642 INFO Completed GET /forecast/data in 131.183s -> 500
+2025-04-29 13:09:23,643 INFO 127.0.0.1 - - [29/Apr/2025 13:09:23] "[35m[1mGET /forecast/data?line=linea03&hours=9 HTTP/1.1[0m" 500 -
+2025-04-29 13:15:08,324 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,324 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,325 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,325 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,325 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,325 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,326 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,326 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:15:08,327 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,329 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,329 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,329 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,329 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,329 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,329 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,330 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:15:08,330 INFO Scheduler started
+2025-04-29 13:15:09,722 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.249.50:5000
+2025-04-29 13:15:09,722 INFO [33mPress CTRL+C to quit[0m
+2025-04-29 13:15:16,014 INFO Request 1: GET /
+2025-04-29 13:15:16,019 INFO Completed GET / in 0.004s -> 200
+2025-04-29 13:15:16,020 INFO 127.0.0.1 - - [29/Apr/2025 13:15:16] "GET / HTTP/1.1" 200 -
+2025-04-29 13:15:18,928 INFO Request 2: GET /forecast/data
+2025-04-29 13:15:18,928 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 9
+2025-04-29 13:17:26,607 INFO predict completed successfully
+2025-04-29 13:17:26,671 INFO Completed GET /forecast/data in 127.743s -> 200
+2025-04-29 13:17:26,672 INFO 127.0.0.1 - - [29/Apr/2025 13:17:26] "GET /forecast/data?line=linea03&hours=9 HTTP/1.1" 200 -
+2025-04-29 13:26:07,012 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,012 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,012 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,013 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,013 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,013 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,014 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,014 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-29 13:26:07,016 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,016 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,017 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,017 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,017 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,019 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,019 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,019 INFO Added job "<lambda>" to job store "default"
+2025-04-29 13:26:07,019 INFO Scheduler started
+2025-04-29 13:26:08,324 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.249.50:5000
+2025-04-29 13:26:08,324 INFO [33mPress CTRL+C to quit[0m
+2025-04-29 13:26:13,484 INFO Request 1: GET /
+2025-04-29 13:26:13,542 INFO Completed GET / in 0.058s -> 200
+2025-04-29 13:26:13,543 INFO 127.0.0.1 - - [29/Apr/2025 13:26:13] "GET / HTTP/1.1" 200 -
+2025-04-29 13:26:24,121 INFO Request 2: GET /forecast/data
+2025-04-29 13:26:24,121 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 9
+2025-04-29 13:28:30,752 INFO predict completed successfully
+2025-04-29 13:28:30,806 INFO Completed GET /forecast/data in 126.685s -> 200
+2025-04-29 13:28:30,807 INFO 127.0.0.1 - - [29/Apr/2025 13:28:30] "GET /forecast/data?line=linea03&hours=9 HTTP/1.1" 200 -
+2025-04-29 13:33:20,994 INFO Request 3: GET /forecast/data
+2025-04-29 13:33:20,995 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea01 --hours 9
+2025-04-29 13:33:28,865 ERROR Error running predict: Command '['C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\.venv\\Scripts\\python.exe', 'C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\src\\predict.py', '--line', 'linea01', '--hours', '9']' returned non-zero exit status 1.
+2025-04-29 13:33:28,866 INFO Completed GET /forecast/data in 7.872s -> 404
+2025-04-29 13:33:28,867 INFO 127.0.0.1 - - [29/Apr/2025 13:33:28] "[33mGET /forecast/data?line=linea01&hours=9 HTTP/1.1[0m" 404 -
