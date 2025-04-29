@@ -1,101 +1,106 @@
 """
-Entrenamiento del modelo predictivo
-Lee el dataset final con features, crea X/y para un paso a futuro,
-ajusta un modelo neuronal feed‑forward, y guarda el modelo y scaler.
+src/train.py
+Entrena un modelo MLP baseline para pronóstico de velocidad de producción.
+- Carga dataset final para la línea configurada
+- Separa features (incluye device_idx) y target
+- Escala features numéricas
+- Guarda feature names y scaler para consistencia en predict.py
+- Entrena MLP con EarlyStopping
+- Guarda modelo con timestamp
 """
 import pandas as pd
-import numpy as np
 from pathlib import Path
 import datetime
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
+from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.callbacks import EarlyStopping
+from config import get_pipeline_config
 
-# --------------------------------------
-# Rutas y parámetros
-device_root = Path.cwd()
-data_dir = device_root / "data" / "processed" / "final"
-models_dir = device_root / "models"
-models_dir.mkdir(exist_ok=True)
+# ---------------------------------------
+# Configuración dinámica
+# ---------------------------------------
+cfg = get_pipeline_config()
+line = cfg['line']
 
-# Prefijo del dataset final
-FINAL_PATTERN = "dataset_final_*.parquet"
-TEST_SIZE = 0.2
-RANDOM_STATE = 42
+# ---------------------------------------
+# Rutas
+# ---------------------------------------
+PROC_FINAL_DIR = Path('data/processed/final')
+MODELS_DIR     = Path('models')
+MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
-# --------------------------------------
-# Funciones auxiliares
-def latest_final() -> Path:
-    files = sorted(data_dir.glob(FINAL_PATTERN), key=lambda p: p.stat().st_mtime)
+# ---------------------------------------
+# Función para obtener archivo más reciente
+# ---------------------------------------
+def latest_file(directory: Path, pattern: str) -> Path:
+    files = sorted(directory.glob(pattern), key=lambda f: f.stat().st_mtime)
     if not files:
-        raise FileNotFoundError(f"No hay archivos {FINAL_PATTERN} en {data_dir}")
+        raise FileNotFoundError(f"No se encontró archivo con patrón {pattern} en {directory}")
     return files[-1]
 
-# --------------------------------------
-# Pipeline de entrenamiento
+# ---------------------------------------
+# Entrenamiento
+# ---------------------------------------
 def train():
-    # 1. Cargar dataset
-    final_path = latest_final()
-    print(f"[TRAIN] Cargando {final_path.name}")
-    df = pd.read_parquet(final_path)
+    # 1. Cargar datos
+    pattern = f"dataset_final_{line}_*.parquet"
+    data_path = latest_file(PROC_FINAL_DIR, pattern)
+    print(f"[TRAIN] Cargando dataset: {data_path.name}")
+    df = pd.read_parquet(data_path)
 
-    # 2. Crear y (X, y): predecir velocity_bpm un paso adelante
-    df['target'] = df['velocity_bpm'].shift(-1)
-    df = df.dropna().reset_index(drop=True)
+    # 2. Separar features y target
+    y = df['velocity_bpm']
+    X = df.drop(columns=['_time', 'linea', 'velocity_bpm', 'shift'])
+    # Mantener sólo numéricas y device_idx
+    X = X.select_dtypes(include=['number'])
 
-    # 3. Definir X e y
-    feature_cols = [c for c in df.columns if c not in ['_time','velocity_bpm','target','device_id']]
-    X = df[feature_cols].values
-    y = df['target'].values.reshape(-1,1)
-
-    # 4. División train/val
+    # 3. División train/valid (sin shuffle para señales temporales)
     X_train, X_val, y_train, y_val = train_test_split(
-        X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, shuffle=False
+        X, y, test_size=0.2, random_state=42, shuffle=False
     )
 
-    # 5. Escalado
+    # 4. Escalado
     scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_val = scaler.transform(X_val)
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_val_scaled   = scaler.transform(X_val)
 
-    # Guardar scaler
-    scaler_path = models_dir / f"scaler_{datetime.date.today()}.pkl"
+    # Guardar scaler y feature names
+    today = datetime.date.today().isoformat()
+    scaler_path = MODELS_DIR / f"scaler_{today}.pkl"
+    feature_names_path = MODELS_DIR / f"feature_names_{today}.pkl"
     joblib.dump(scaler, scaler_path)
+    joblib.dump(X.columns.tolist(), feature_names_path)
     print(f"[TRAIN] Scaler guardado en: {scaler_path}")
+    print(f"[TRAIN] Feature names guardados en: {feature_names_path}")
 
-    # 6. Definir modelo
+    # 5. Definir modelo MLP
+    n_features = X_train_scaled.shape[1]
     model = Sequential([
-        Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+        Input(shape=(n_features,)),
         Dense(64, activation='relu'),
+        Dense(32, activation='relu'),
         Dense(1)
     ])
     model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
-    # 7. Callbacks
-    checkpoint_path = models_dir / f"model_{datetime.date.today()}.h5"
-    callbacks = [
-        EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True),
-        ModelCheckpoint(checkpoint_path, save_best_only=True, monitor='val_loss')
-    ]
-
-    # 8. Entrenamiento
-    print(f"[TRAIN] Iniciando fit, X_train shape={X_train.shape}")
-    history = model.fit(
-        X_train, y_train,
-        validation_data=(X_val, y_val),
+    # 6. Entrenar con EarlyStopping
+    es = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+    model.fit(
+        X_train_scaled, y_train,
+        validation_data=(X_val_scaled, y_val),
         epochs=50,
-        batch_size=32,
-        callbacks=callbacks
+        batch_size=256,
+        callbacks=[es],
+        verbose=1
     )
 
-    print(f"[TRAIN] Modelo entrenado guardado en: {checkpoint_path}")
+    # 7. Guardar modelo
+    model_path = MODELS_DIR / f"model_{today}.h5"
+    model.save(model_path)
+    print(f"[TRAIN] Modelo entrenado guardado en: {model_path}")
 
 if __name__ == '__main__':
-    try:
-        train()
-    except Exception as e:
-        print(f"[ERROR TRAIN] {e}")
-        raise
+    train()
