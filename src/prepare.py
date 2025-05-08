@@ -44,13 +44,13 @@ def latest_parquet(pattern: str):
 # -----------------------------------
 if __name__ == '__main__':
     # 1. Cargar último parquet merged para la línea
-    pattern = str(PROC_DIR / f"merged_{line}_*.parquet")
+    pattern = str(PROC_DIR / f"merged_*.parquet")
     merged_path = latest_parquet(pattern)
     print(f"[PREP] Cargando {merged_path}")
     df = pd.read_parquet(merged_path)
 
     # 2. Filtrar por línea y reset index
-    df = df[df['linea'] == line].reset_index(drop=True)
+    #df = df[df['linea'] == line].reset_index(drop=True)
 
     # 3. Ordenar por tiempo
     df = df.sort_values('_time').reset_index(drop=True)
@@ -81,6 +81,6 @@ if __name__ == '__main__':
 
     # 9. Guardar dataset final
     today = datetime.date.today().isoformat()
-    out_path = FINAL_DIR / f"dataset_final_{line}_{today}.parquet"
+    out_path = FINAL_DIR / f"dataset_final_{today}.parquet"
     df_final.to_parquet(out_path, index=False)
     print(f"[PREP] Dataset final guardado en: {out_path}")

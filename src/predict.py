@@ -10,6 +10,7 @@ Script de pronóstico multi-step dinámico:
 """
 import argparse
 import pandas as pd
+import numpy as np
 from pathlib import Path
 import datetime
 import joblib
@@ -47,6 +48,30 @@ def add_time_features(df):
     return df
 
 # -----------------------------------
+# Validar y limitar predicción
+# -----------------------------------
+def validate_prediction(pred, historical_data, max_change_percent=20):
+    # Obtener estadísticas históricas
+    mean_vel = historical_data['velocity_bpm'].mean()
+    std_vel = historical_data['velocity_bpm'].std()
+    min_vel = historical_data['velocity_bpm'].min()
+    max_vel = historical_data['velocity_bpm'].max()
+    
+    # Límites absolutos basados en datos históricos
+    lower_bound = max(0, min_vel * 0.5)  # No permitir menos del 50% del mínimo histórico
+    upper_bound = max_vel * 1.2  # No permitir más del 120% del máximo histórico
+    
+    # Límites basados en la media y desviación estándar
+    std_lower = mean_vel - 3 * std_vel
+    std_upper = mean_vel + 3 * std_vel
+    
+    # Aplicar límites
+    pred = np.clip(pred, lower_bound, upper_bound)
+    pred = np.clip(pred, std_lower, std_upper)
+    
+    return float(pred)
+
+# -----------------------------------
 # Pronóstico multi-step
 # -----------------------------------
 def predict_multi_step(line: str, hours: int, lags: list, roll_windows: list):
@@ -68,9 +93,13 @@ def predict_multi_step(line: str, hours: int, lags: list, roll_windows: list):
     print(f"[PREDICT] Usando scaler={scaler_path.name}, features={len(feature_names)}, modelo={model_path.name}")
 
     # Cargar dataset final filtrado
-    parquet_pattern = f"dataset_final_{line}_*.parquet"
+    parquet_pattern = f"dataset_final_*.parquet"
     df = pd.read_parquet(latest_file(FINAL_DIR, parquet_pattern))
     df = df[df['linea'] == line].sort_values('_time').reset_index(drop=True)
+    
+    # Mantener datos históricos para validación
+    historical_data = df.copy()
+    
     # Mantener o generar device_idx
     if 'device_idx' not in df.columns:
         df['device_idx'] = df['device_id'].astype('category').cat.codes
@@ -78,6 +107,7 @@ def predict_multi_step(line: str, hours: int, lags: list, roll_windows: list):
     # Forecast iterativo
     steps = hours * 60 * 2  # intervalos de 30s
     results = []
+    last_pred = None
 
     for _ in range(steps):
         last = df.iloc[-1:].copy()
@@ -98,7 +128,20 @@ def predict_multi_step(line: str, hours: int, lags: list, roll_windows: list):
 
         # Predicción
         y_pred = model.predict(X_scaled, verbose=0)[0,0]
+        
+        # Validar y limitar la predicción
+        y_pred = validate_prediction(y_pred, historical_data)
+        
+        # Si es la primera predicción, guardarla
+        if last_pred is None:
+            last_pred = y_pred
+        
+        # Limitar el cambio porcentual entre predicciones consecutivas
+        max_change = last_pred * 0.2  # máximo 20% de cambio
+        y_pred = np.clip(y_pred, last_pred - max_change, last_pred + max_change)
+        
         last['velocity_bpm'] = y_pred
+        last_pred = y_pred
 
         # Agregar a df y resultados
         df = pd.concat([df, last], ignore_index=True)

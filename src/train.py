@@ -46,7 +46,7 @@ def latest_file(directory: Path, pattern: str) -> Path:
 # ---------------------------------------
 def train():
     # 1. Cargar datos
-    pattern = f"dataset_final_{line}_*.parquet"
+    pattern = f"dataset_final_*.parquet"
     data_path = latest_file(PROC_FINAL_DIR, pattern)
     print(f"[TRAIN] Cargando dataset: {data_path.name}")
     df = pd.read_parquet(data_path)

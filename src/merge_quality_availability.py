@@ -66,8 +66,8 @@ def merge_and_clean():
     d["_time"] = pd.to_datetime(d["_time"]).dt.floor("30s")
 
     # 3. Filtrar sólo datos de la línea configurada
-    q = q[q['linea'] == line].reset_index(drop=True)
-    d = d[d['linea'] == line].reset_index(drop=True)
+    #q = q[q['linea'] == line].reset_index(drop=True)
+    #d = d[d['linea'] == line].reset_index(drop=True)
 
     # 4. Eliminar columnas _field que no aportan
     q = q.drop(columns=[c for c in q.columns if c.startswith("_field")], errors="ignore")
@@ -106,7 +106,7 @@ def merge_and_clean():
     merged = pd.get_dummies(merged, columns=["stop_group"], prefix="stop")
 
     # 12. Guardar Parquet, incluyendo línea en el nombre
-    out_path = PROC_DIR / f"merged_{line}_{datetime.date.today()}.parquet"
+    out_path = PROC_DIR / f"merged_{datetime.date.today()}.parquet"
     merged.to_parquet(out_path, index=False)
     print(f"[MERGE] Dataset fusionado ({line}) guardado en: {out_path}")
 
