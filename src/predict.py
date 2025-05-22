@@ -40,11 +40,24 @@ def latest_file(directory: Path, pattern: str) -> Path:
 # -----------------------------------
 def add_time_features(df):
     t = pd.to_datetime(df['_time'].iloc[0])
-    df['hour']       = t.hour
-    df['minute']     = t.minute
-    df['dayofweek']  = t.dayofweek
+    
+    # Features básicos
+    df['hour'] = t.hour
+    df['minute'] = t.minute
+    df['dayofweek'] = t.dayofweek
     df['is_weekend'] = int(t.dayofweek >= 5)
-    df['shift']      = 'day' if 7 <= t.hour < 19 else 'night'
+    
+    # Features cíclicos
+    df['hour_sin'] = np.sin(2 * np.pi * t.hour/24)
+    df['hour_cos'] = np.cos(2 * np.pi * t.hour/24)
+    df['minute_sin'] = np.sin(2 * np.pi * t.minute/60)
+    df['minute_cos'] = np.cos(2 * np.pi * t.minute/60)
+    df['dayofweek_sin'] = np.sin(2 * np.pi * t.dayofweek/7)
+    df['dayofweek_cos'] = np.cos(2 * np.pi * t.dayofweek/7)
+    
+    # Turno
+    df['shift'] = 'day' if 7 <= t.hour < 19 else 'night'
+    
     return df
 
 # -----------------------------------

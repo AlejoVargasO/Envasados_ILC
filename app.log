@@ -758,3 +758,150 @@ NameError: name 'pd' is not defined
 2025-05-08 13:22:44,379 INFO predict completed successfully
 2025-05-08 13:22:44,393 INFO Completed GET /forecast/data in 47.284s -> 200
 2025-05-08 13:22:44,394 INFO 127.0.0.1 - - [08/May/2025 13:22:44] "GET /forecast/data?line=linea03&hours=3 HTTP/1.1" 200 -
+2025-05-08 13:47:48,983 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,984 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,986 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,987 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,987 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,988 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,989 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,989 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 13:47:48,991 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,991 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,993 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,994 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,994 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,995 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,995 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,996 INFO Added job "<lambda>" to job store "default"
+2025-05-08 13:47:48,997 INFO Scheduler started
+2025-05-08 13:47:50,288 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.105:5000
+2025-05-08 13:47:50,289 INFO [33mPress CTRL+C to quit[0m
+2025-05-08 13:47:55,676 INFO Request 1: GET /
+2025-05-08 13:47:55,680 INFO Completed GET / in 0.004s -> 200
+2025-05-08 13:47:55,681 INFO 127.0.0.1 - - [08/May/2025 13:47:55] "GET / HTTP/1.1" 200 -
+2025-05-08 13:48:02,925 INFO Request 2: GET /forecast/data
+2025-05-08 13:48:02,926 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 2
+2025-05-08 13:48:37,139 INFO predict completed successfully
+2025-05-08 13:48:37,159 INFO Completed GET /forecast/data in 34.234s -> 200
+2025-05-08 13:48:37,159 INFO 127.0.0.1 - - [08/May/2025 13:48:37] "GET /forecast/data?line=linea03&hours=2 HTTP/1.1" 200 -
+2025-05-08 14:04:26,511 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,512 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,513 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,513 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,513 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,514 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,514 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,516 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:04:26,518 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,519 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,520 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,520 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,521 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,521 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,521 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,522 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:04:26,522 INFO Scheduler started
+2025-05-08 14:04:28,086 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.248.50:5000
+2025-05-08 14:04:28,087 INFO [33mPress CTRL+C to quit[0m
+2025-05-08 14:04:36,250 INFO Request 1: GET /
+2025-05-08 14:04:36,256 INFO Completed GET / in 0.006s -> 200
+2025-05-08 14:04:36,257 INFO 127.0.0.1 - - [08/May/2025 14:04:36] "GET / HTTP/1.1" 200 -
+2025-05-08 14:04:46,546 INFO Request 2: GET /forecast/data
+2025-05-08 14:04:46,546 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 9
+2025-05-08 14:04:55,375 ERROR Error running predict: Command '['C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\.venv\\Scripts\\python.exe', 'C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\src\\predict.py', '--line', 'linea03', '--hours', '9']' returned non-zero exit status 1.
+2025-05-08 14:04:55,376 INFO Completed GET /forecast/data in 8.829s -> 404
+2025-05-08 14:04:55,377 INFO 127.0.0.1 - - [08/May/2025 14:04:55] "[33mGET /forecast/data?line=linea03&hours=9 HTTP/1.1[0m" 404 -
+2025-05-08 14:09:44,145 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,146 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,146 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,146 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,146 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,148 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,148 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,148 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-08 14:09:44,150 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,151 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,151 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,151 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,152 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,152 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,153 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,153 INFO Added job "<lambda>" to job store "default"
+2025-05-08 14:09:44,153 INFO Scheduler started
+2025-05-08 14:09:45,451 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.248.50:5000
+2025-05-08 14:09:45,451 INFO [33mPress CTRL+C to quit[0m
+2025-05-08 14:10:04,786 INFO Request 1: GET /
+2025-05-08 14:10:04,791 INFO Completed GET / in 0.006s -> 200
+2025-05-08 14:10:04,793 INFO 127.0.0.1 - - [08/May/2025 14:10:04] "GET / HTTP/1.1" 200 -
+2025-05-08 14:10:06,426 INFO Request 2: GET /forecast/data
+2025-05-08 14:10:06,427 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 9
+2025-05-08 14:12:16,346 INFO predict completed successfully
+2025-05-08 14:12:16,382 INFO Completed GET /forecast/data in 129.956s -> 200
+2025-05-08 14:12:16,383 INFO 127.0.0.1 - - [08/May/2025 14:12:16] "GET /forecast/data?line=linea03&hours=9 HTTP/1.1" 200 -
+2025-05-08 14:18:53,001 INFO Request 3: GET /forecast/data
+2025-05-08 14:18:53,001 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea01 --hours 9
+2025-05-08 14:21:33,915 INFO predict completed successfully
+2025-05-08 14:21:33,945 INFO Completed GET /forecast/data in 160.944s -> 200
+2025-05-08 14:21:33,947 INFO 127.0.0.1 - - [08/May/2025 14:21:33] "GET /forecast/data?line=linea01&hours=9 HTTP/1.1" 200 -
+2025-05-22 07:53:48,093 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,095 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,097 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,098 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,099 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,100 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,102 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,103 INFO Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-22 07:53:48,112 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,114 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,115 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,116 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,117 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,118 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,119 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,120 INFO Added job "<lambda>" to job store "default"
+2025-05-22 07:53:48,125 INFO Scheduler started
+2025-05-22 07:53:49,562 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.108:5000
+2025-05-22 07:53:49,562 INFO [33mPress CTRL+C to quit[0m
+2025-05-22 10:05:00,009 INFO Running job "<lambda> (trigger: cron[hour='10', minute='5'], next run at: 2025-05-22 10:05:00 -05)" (scheduled at 2025-05-22 10:05:00-05:00)
+2025-05-22 10:05:00,011 INFO Running ingest: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\ingest.py
+2025-05-22 10:05:42,628 ERROR Error running ingest: Command '['C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\.venv\\Scripts\\python.exe', 'C:\\Users\\aleja\\Workspace\\Python\\Proyecto_Envasados\\src\\ingest.py']' returned non-zero exit status 1.
+2025-05-22 10:05:42,629 INFO Job "<lambda> (trigger: cron[hour='10', minute='5'], next run at: 2025-05-23 10:05:00 -05)" executed successfully
+2025-05-22 10:08:00,012 INFO Running job "<lambda> (trigger: cron[hour='10', minute='8'], next run at: 2025-05-23 10:08:00 -05)" (scheduled at 2025-05-22 10:08:00-05:00)
+2025-05-22 10:08:00,013 INFO Running merge: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\merge_quality_availability.py
+2025-05-22 10:08:10,103 INFO merge completed successfully
+2025-05-22 10:08:10,103 INFO Job "<lambda> (trigger: cron[hour='10', minute='8'], next run at: 2025-05-23 10:08:00 -05)" executed successfully
+2025-05-22 10:10:00,003 INFO Running job "<lambda> (trigger: cron[hour='10', minute='10'], next run at: 2025-05-23 10:10:00 -05)" (scheduled at 2025-05-22 10:10:00-05:00)
+2025-05-22 10:10:00,004 INFO Running train: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\train.py
+2025-05-22 10:14:32,872 INFO train completed successfully
+2025-05-22 10:14:32,873 INFO Job "<lambda> (trigger: cron[hour='10', minute='10'], next run at: 2025-05-23 10:10:00 -05)" executed successfully
+2025-05-22 10:15:00,004 INFO Running job "<lambda> (trigger: cron[hour='10', minute='15'], next run at: 2025-05-23 10:15:00 -05)" (scheduled at 2025-05-22 10:15:00-05:00)
+2025-05-22 10:15:00,005 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 9
+2025-05-22 10:17:13,447 INFO predict completed successfully
+2025-05-22 10:17:13,447 INFO Job "<lambda> (trigger: cron[hour='10', minute='15'], next run at: 2025-05-23 10:15:00 -05)" executed successfully
+2025-05-22 12:50:14,634 INFO Request 1: GET /
+2025-05-22 12:50:14,645 INFO Completed GET / in 0.012s -> 401
+2025-05-22 12:50:14,653 INFO 127.0.0.1 - - [22/May/2025 12:50:14] "[31m[1mGET / HTTP/1.1[0m" 401 -
+2025-05-22 12:50:20,828 INFO Request 2: GET /
+2025-05-22 12:50:20,846 INFO Completed GET / in 0.019s -> 200
+2025-05-22 12:50:20,846 INFO 127.0.0.1 - - [22/May/2025 12:50:20] "GET / HTTP/1.1" 200 -
+2025-05-22 12:50:21,348 INFO Request 3: GET /favicon.ico
+2025-05-22 12:50:21,351 INFO Completed GET /favicon.ico in 0.002s -> 404
+2025-05-22 12:50:21,352 INFO 127.0.0.1 - - [22/May/2025 12:50:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-22 12:50:24,545 INFO Request 4: GET /forecast/data
+2025-05-22 12:50:24,547 INFO Running predict: C:\Users\aleja\Workspace\Python\Proyecto_Envasados\.venv\Scripts\python.exe C:\Users\aleja\Workspace\Python\Proyecto_Envasados\src\predict.py --line linea03 --hours 9
+2025-05-22 12:53:05,088 INFO predict completed successfully
+2025-05-22 12:53:05,171 INFO Completed GET /forecast/data in 160.626s -> 200
+2025-05-22 12:53:05,172 INFO 127.0.0.1 - - [22/May/2025 12:53:05] "GET /forecast/data?line=linea03&hours=9 HTTP/1.1" 200 -
